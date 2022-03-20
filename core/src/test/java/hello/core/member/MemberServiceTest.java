@@ -8,7 +8,7 @@ public class MemberServiceTest {
 
     @Test
     void join() {
-        //given 이런이런 환경이 주어졌을 때 111
+        //given 이런이런 환경이 주어졌을 때 1111111
         Member member = new Member(1L, "memberA", Grade.VIP);
 
         //when 이렇게 됐을 때
