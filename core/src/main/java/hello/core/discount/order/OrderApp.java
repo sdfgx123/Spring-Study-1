@@ -1,4 +1,4 @@
-package hello.core.order;
+package hello.core.discount.order;
 
 import hello.core.member.Grade;
 import hello.core.member.Member;
