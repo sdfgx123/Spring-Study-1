@@ -10,8 +10,10 @@ public class OrderServiceImpl implements OrderService {
 
     // member Repository 에서 회원 찾아야 됨
     private final MemberRepository memberRepository = new MemoryMemberRepository();
-    // 할인 정책도 필요함
-    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+    // 할인 정책도 필요함 > 할인 정책
+    // 바로 아래 코드 보면, 인터페이스가 구체클래스도 참조하기 때문에 OCP 정책 위반임.
+    //private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
+    private DiscountPolicy discountPolicy;
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
