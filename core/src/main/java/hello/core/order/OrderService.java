@@ -1,4 +1,4 @@
-package hello.core.discount.order;
+package hello.core.order;
 
 public interface OrderService {
     // 최종 order 결과를 반환한다

@@ -1,5 +1,6 @@
-package hello.core.discount.order;
+package hello.core.order;
 
+import hello.core.AppConfig;
 import hello.core.member.Grade;
 import hello.core.member.Member;
 import hello.core.member.MemberService;
@@ -8,8 +9,15 @@ import hello.core.member.MemberServiceImpl;
 public class OrderApp {
 
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
-        OrderService orderService = new OrderServiceImpl();
+
+        // OrderApp도 AppConfig를 쓰도록 바꿈
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+        OrderService orderService = appConfig.orderService();
+
+
+     //   MemberService memberService = new MemberServiceImpl();
+     //   OrderService orderService = new OrderServiceImpl( );
 
         // member id를 1로 지정
         Long memberId = 1L;
