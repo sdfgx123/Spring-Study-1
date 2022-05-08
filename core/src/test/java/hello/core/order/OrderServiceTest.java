@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 public class OrderServiceTest {
 
+    // 메모리에 객체 올림
     MemberService memberService;
     OrderService orderService;
 
@@ -24,6 +25,7 @@ public class OrderServiceTest {
 
     @Test
     void createOrder() {
+        // primitive 타입(long으로 선언)도 가능하지만, 이렇게 하면 Null 값을 못 집어넣음.
         Long memberId = 1L;
         Member member = new Member(memberId, "memberA", Grade.VIP);
         memberService.join(member);
