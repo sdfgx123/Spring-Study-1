@@ -21,15 +21,18 @@ public class OrderApp {
 
         // member id를 1로 지정
         Long memberId = 1L;
-        // 회원 생성
+        // 회원 선언
         Member member = new Member(memberId, "memberA", Grade.VIP);
-        // 메모리 객체에 해당 member를 넣음
+        // 메모리 객체에 해당 member 삽입
         memberService.join(member);
 
         // order 생성
         Order order = orderService.createOrder(memberId, "itemA", 10000);
 
         System.out.println("order = " + order.toString());
+        System.out.println("order.calculatePrice = " + order.calculatePrice());
+
+
 
     }
 }
