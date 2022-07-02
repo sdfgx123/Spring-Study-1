@@ -6,6 +6,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class SingletonTest {
 
     // 스프링 없는 의존성 주입?의 문제점을 파악하기 위함
@@ -26,7 +28,7 @@ public class SingletonTest {
         // memberService1과 memberService2는 서로 다르다
         // Assertions까지 합쳐서 객체가 총 4개가 생성됨 -> 메모리 낭비가 심하다
         // 해결을 위해선 객체를 하나만 생성하고, 그걸 공유하게 만들면 됨
-        Assertions.assertThat(memberService1).isNotSameAs(memberService2);
+        assertThat(memberService1).isNotSameAs(memberService2);
 
     }
 
@@ -37,8 +39,13 @@ public class SingletonTest {
         SingletonService singletonService1 = SingletonService.getInstance();
         SingletonService singletonService2 = SingletonService.getInstance();
 
-        // 같은 인스턴스인지, 다른 인스턴스인지 확인하기 위한 코드
+        // 같은 인스턴스인지, 다른 인스턴스인지 확인하기 위한 코드 -> 같은 인스턴스를 반환함
         System.out.println("singletonService1 = " + singletonService1);
         System.out.println("singletonService2 = " + singletonService2);
+
+        // assertThat으로 오류 없는지 검증
+        assertThat(singletonService1).isEqualTo(singletonService2);
+
+
     }
 }
