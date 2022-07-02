@@ -44,8 +44,8 @@ public class SingletonTest {
         System.out.println("singletonService2 = " + singletonService2);
 
         // assertThat으로 오류 없는지 검증
-        assertThat(singletonService1).isEqualTo(singletonService2);
-
+        // same과 equal의 차이점 : same은 자바에서 == 과 같은 것이고, equal은 자바에서 equal 이랑 같은 것임
+        assertThat(singletonService1).isSameAs(singletonService2);
 
     }
 }
