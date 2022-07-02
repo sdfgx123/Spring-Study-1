@@ -21,7 +21,7 @@ public class BeanDefinitionTest {
         String[] beanDefinitionNames = ac.getBeanDefinitionNames();
         // Bean 정보들이 담긴 bean definition 들을 하나씩 반복
         for (String beanDefinitionName : beanDefinitionNames) {
-            // bean definition 정보 가지고 ac에서 bean definition 정보 가져옴
+            // beanDefinitionName 가지고 ac에서 beanDefinition 가져옴
             BeanDefinition beanDefinition = ac.getBeanDefinition(beanDefinitionName);
 
             // 만약, bean definition의 역할이 application의 role과 같다면
