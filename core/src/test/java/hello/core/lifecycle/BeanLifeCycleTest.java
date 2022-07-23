@@ -11,6 +11,7 @@ public class BeanLifeCycleTest {
 
     @Test
     public void lifeCycleTest() {
+        // 의존성 받아옴
         ConfigurableApplicationContext ac = new AnnotationConfigApplicationContext(LifeCycleConfig.class);
         NetworkClient client = ac.getBean(NetworkClient.class);
         ac.close();
