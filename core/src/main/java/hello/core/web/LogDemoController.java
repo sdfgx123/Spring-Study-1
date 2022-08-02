@@ -2,6 +2,7 @@ package hello.core.web;
 
 import hello.core.common.MyLogger;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 public class LogDemoController {
 
     private final LogDemoService logDemoService;
+    // object provider를 통해 의존성을 주입받음
+    // provider를 쓰면, 고객 request가 들어온 상태에서, http가 살아있으니까, scope를 쓸 수 있다
     private final MyLogger myLogger;
 
     // ResponseBody : 뷰 화면 없이 문자 그대로 반환시 사용
