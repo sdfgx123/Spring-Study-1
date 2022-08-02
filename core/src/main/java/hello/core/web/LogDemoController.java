@@ -26,6 +26,7 @@ public class LogDemoController {
     public String logDemo(HttpServletRequest request) {
         // 고객이 어떤 URL로 요청했는지 알 수 있음
         String requestURL = request.getRequestURL().toString();
+        System.out.println("myLogger = " + myLogger.getClass());
         myLogger.setRequestURL(requestURL);
 
         myLogger.log("controller test");
