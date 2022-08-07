@@ -29,7 +29,7 @@ public class ResponseHeaderServlet extends HttpServlet {
         // [header 편의 메서드]
         //content(response);
         //cookie(response);
-        redirect(response);
+        //redirect(response);
 
         PrintWriter writer = response.getWriter();
         writer.println("안녕하세요");
