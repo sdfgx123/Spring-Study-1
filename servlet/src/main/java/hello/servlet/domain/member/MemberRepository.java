@@ -17,7 +17,7 @@ public class MemberRepository {
     // 싱글톤으로 만듬
     private static final MemberRepository instance = new MemberRepository();
 
-    // 반드시 이 함수로 조회함
+    // 반드시 이 함수로 조회함 > 싱글톤 패턴 보장을 위해서
     public static MemberRepository getInstance() {
         return instance;
     }
