@@ -14,6 +14,7 @@ public class MyView {
         this.viewPath = viewPath;
     }
 
+    // rendering 역할
     public void render(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);
         dispatcher.forward(request, response);
