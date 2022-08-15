@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+// localhost /front-controller/v1 밑에 일단 이걸로 호출
 @WebServlet(name = "frontControllerServletV1", urlPatterns = "/front-controller/v1/*")
 public class FrontControllerServletV1 extends HttpServlet {
 
@@ -39,6 +40,10 @@ public class FrontControllerServletV1 extends HttpServlet {
 
         if (controller == null) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            return;
         }
+
+        // controller 조회가 잘 됐다면,
+        controller.process(request, response);
     }
 }
