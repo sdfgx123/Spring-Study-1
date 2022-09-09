@@ -5,10 +5,7 @@ import hello.itemservice.domain.item.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -43,9 +40,68 @@ public class BasicItemController {
     }
 
     // 같은 URL 이지만 매서드로 기능 구분함
+    //@PostMapping("/add")
+    public String addItemV1(@RequestParam String itemName,
+                       @RequestParam int price,
+                       @RequestParam Integer quantity,
+                       Model model) {
+
+        Item item = new Item();
+        item.setItemName(itemName);
+        item.setPrice(price);
+        item.setQuantity(quantity);
+
+        itemRepository.save(item);
+
+        model.addAttribute("item", item);
+
+        return "basic/item";
+    }
+
+    // ModelAttribute 쓰면 알아서 모델 다 만들어줌
+    //@PostMapping("/add")
+    public String addItemV2(@ModelAttribute("item") Item item) {
+
+        itemRepository.save(item);
+        // 자동 추가되므로 생략 가능함
+        // model.addAttribute("item", item);
+
+        return "basic/item";
+    }
+
+    /**
+     * modelAttribute에 파라미터 생략하면,
+     * 클래스명 첫글자를 소문자로 바꿈
+     * 여기서, 클래스명이 Item이니까 item이 ModelAttribute에 담김
+     */
+    //@PostMapping("/add")
+    public String addItemV3(@ModelAttribute Item item, Model model) {
+
+        itemRepository.save(item);
+        // 자동 추가되므로 생략 가능함
+        // model.addAttribute("item", item);
+
+        return "basic/item";
+    }
+
+    // 파라미터가 객체면, @ModelAttribute도 생략 가능함
     @PostMapping("/add")
-    public String save() {
-        return "xxx";
+    public String addItemV4(Item item) {
+        itemRepository.save(item);
+        return "basic/item";
+    }
+
+    @GetMapping("/{itemId}/edit")
+    public String editForm(@PathVariable Long itemId, Model model) {
+        Item item = itemRepository.findById(itemId);
+        model.addAttribute("item", item);
+        return "/basic/editForm";
+    }
+
+    @PostMapping("/{itemId}/edit")
+    public String edit(@PathVariable Long itemId, @ModelAttribute Item item) {
+        itemRepository.update(itemId, item);
+        return "redirect:/basic/items/{itemId}";
     }
 
     /**
