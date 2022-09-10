@@ -85,10 +85,17 @@ public class BasicItemController {
     }
 
     // 파라미터가 객체면, @ModelAttribute도 생략 가능함
-    @PostMapping("/add")
+    //@PostMapping("/add")
     public String addItemV4(Item item) {
         itemRepository.save(item);
         return "basic/item";
+    }
+
+    // 새로고침 > 요청 중복 > PRG 패턴 적용
+    @PostMapping("/add")
+    public String addItemV5(Item item) {
+        itemRepository.save(item);
+        return "redirect:/basic/items/" + item.getId();
     }
 
     @GetMapping("/{itemId}/edit")
